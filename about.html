@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>About Us - POMATO</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #030303;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #030303; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #444; }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .glass-card {
+            background: linear-gradient(145deg, rgba(30,30,30,0.4) 0%, rgba(10,10,10,0.4) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-blue {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: { background: "#030303", primary: "#00f2fe" }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-white selection:bg-primary/30 selection:text-white pb-24 md:pb-0 antialiased">
+    
+    <!-- Top Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300">
+        <div class="flex justify-between items-center h-20 px-6 md:px-12 max-w-[1400px] mx-auto">
+            <a href="index.html" class="text-2xl font-black tracking-widest text-white uppercase drop-shadow-lg flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center">
+                    <span class="text-black text-sm material-symbols-outlined">change_history</span>
+                </div>
+                POMATO
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 bg-white/5 px-8 py-3 rounded-full border border-white/10 backdrop-blur-md">
+                <a class="flex items-center text-white/60 text-sm font-medium tracking-wide hover:text-white transition-colors" href="index.html">Home</a>
+                <div class="relative group">
+                    <a href="brand.html" class="flex items-center gap-1 text-white/60 text-sm font-medium tracking-wide hover:text-white transition-colors">
+                        Brands <span class="material-symbols-outlined text-sm transition-transform group-hover:rotate-180" data-icon="expand_more">expand_more</span>
+                    </a>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                        <div class="w-64 glass-card rounded-2xl flex flex-col py-3 overflow-hidden transform scale-95 group-hover:scale-100 origin-top transition-transform duration-300">
+                            <a href="brand.html#apple" class="px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Apple / iPhone</a>
+                            <a href="brand.html#samsung" class="px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Samsung</a>
+                            <a href="brand.html#google" class="px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Google Pixel</a>
+                            <a href="brand.html#oneplus" class="px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">OnePlus</a>
+                            <a href="brand.html#xiaomi" class="px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Xiaomi</a>
+                            <div class="h-px bg-white/10 my-2"></div>
+                            <a href="brand.html" class="px-5 py-2 text-sm text-white hover:bg-white/10 transition-colors font-semibold">View All Brands</a>
+                        </div>
+                    </div>
+                </div>
+                <a class="flex items-center text-white/60 text-sm font-medium tracking-wide hover:text-white transition-colors" href="special.html">Specials</a>
+                <a class="flex items-center text-white text-sm font-semibold tracking-wide" href="about.html">About</a>
+                <a class="flex items-center text-white/60 text-sm font-medium tracking-wide hover:text-white transition-colors" href="contact.html">Contact Us</a>
+            </div>
+
+            <div class="flex items-center gap-5">
+                <button id="search-btn" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-all active:scale-95">
+                    <span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+                </button>
+                <button id="cart-btn" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center relative text-white/70 hover:text-white hover:bg-white/10 transition-all active:scale-95">
+                    <span class="material-symbols-outlined text-[20px]" data-icon="shopping_cart">shopping_cart</span>
+                    <span id="cart-count" class="absolute -top-1 -right-1 text-[10px] font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-white min-w-[18px] h-[18px] flex items-center justify-center rounded-full shadow-lg pointer-events-none transition-transform duration-200">0</span>
+                </button>
+                <button id="profile-btn" class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-zinc-200 transition-all active:scale-95 hidden md:flex">
+                    <span class="material-symbols-outlined text-[20px]" data-icon="person">person</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative py-32 overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full filter blur-[100px] animate-blob"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full filter blur-[100px] animate-blob animation-delay-2000"></div>
+            </div>
+            
+            <div class="relative z-10 max-w-[1200px] mx-auto px-6 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-white/10 mb-8 backdrop-blur-md">
+                    <span class="text-sm font-bold tracking-widest uppercase text-blue-400">Our Story</span>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black mb-8 tracking-tighter">
+                    <span class="text-gradient">Redefining the</span><br/>
+                    <span class="text-gradient-blue">Mobile Experience.</span>
+                </h1>
+                <p class="text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed">
+                    At POMATO, we believe that technology should be an extension of your ambition. We curate the world's most advanced mobile technology to empower your daily life.
+                </p>
+            </div>
+        </section>
+
+        <!-- Mission Sections -->
+        <section class="py-24 max-w-[1400px] mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-32">
+                <div class="order-2 md:order-1">
+                    <h2 class="text-4xl font-bold mb-6 text-white">Innovation at Core</h2>
+                    <p class="text-lg text-white/60 mb-8 font-light leading-relaxed">
+                        We don't just sell phones; we provide gateways to the future. Our selection is meticulously picked based on performance, design, and durability. From aerospace-grade materials to cutting-edge AI integration, we bring you the best of what's next.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="p-6 glass-card rounded-2xl">
+                            <h3 class="text-3xl font-bold text-blue-400 mb-1">500k+</h3>
+                            <p class="text-sm text-white/40 uppercase tracking-widest">Happy Customers</p>
+                        </div>
+                        <div class="p-6 glass-card rounded-2xl">
+                            <h3 class="text-3xl font-bold text-purple-400 mb-1">50+</h3>
+                            <p class="text-sm text-white/40 uppercase tracking-widest">Global Brands</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 relative group">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop" alt="Future Technology" class="rounded-[2rem] border border-white/10 relative z-10 w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-blue-500/20 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" alt="Precision Engineering" class="rounded-[2rem] border border-white/10 relative z-10 w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
+                </div>
+                <div>
+                    <h2 class="text-4xl font-bold mb-6 text-white">Quality Without Compromise</h2>
+                    <p class="text-lg text-white/60 mb-8 font-light leading-relaxed">
+                        Every device that leaves our warehouse undergoes rigorous testing. We partner directly with manufacturers to ensure you receive authentic, high-performance technology with the most reliable support ecosystem.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-white/80 font-medium">
+                            <span class="material-symbols-outlined text-blue-400">verified</span>
+                            100% Authentic Products
+                        </li>
+                        <li class="flex items-center gap-3 text-white/80 font-medium">
+                            <span class="material-symbols-outlined text-blue-400">local_shipping</span>
+                            Zero Delivery Charges Worldwide
+                        </li>
+                        <li class="flex items-center gap-3 text-white/80 font-medium">
+                            <span class="material-symbols-outlined text-blue-400">support_agent</span>
+                            24/7 Expert Technical Support
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Values -->
+        <section class="py-32 bg-white/5 border-y border-white/5">
+            <div class="max-w-[1200px] mx-auto px-6 text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Our Core Values</h2>
+                <p class="text-white/50">The principles that drive every decision we make.</p>
+            </div>
+            
+            <div class="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-10 glass-card rounded-[2rem] text-center group hover:-translate-y-2 transition-all">
+                    <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-blue-400 text-3xl">lightbulb</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Innovation</h3>
+                    <p class="text-white/50 font-light">Continuously pushing the boundaries of what's possible in mobile commerce.</p>
+                </div>
+                <div class="p-10 glass-card rounded-[2rem] text-center group hover:-translate-y-2 transition-all">
+                    <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-purple-400 text-3xl">shield</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Integrity</h3>
+                    <p class="text-white/50 font-light">Building trust through transparency and unwavering commitment to quality.</p>
+                </div>
+                <div class="p-10 glass-card rounded-[2rem] text-center group hover:-translate-y-2 transition-all">
+                    <div class="w-16 h-16 bg-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-emerald-400 text-3xl">group</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Customer Obsession</h3>
+                    <p class="text-white/50 font-light">Your satisfaction isn't just our goal; it's our entire reason for being.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-16 px-6 md:px-12 border-t border-white/5 bg-[#030303] relative overflow-hidden">
+        <div class="max-w-[1400px] mx-auto flex flex-col items-center gap-10 text-center">
+            <a href="index.html" class="text-2xl font-black tracking-widest text-white uppercase flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center">
+                    <span class="text-black text-[10px] material-symbols-outlined">change_history</span>
+                </div>
+                POMATO
+            </a>
+            <div class="flex flex-wrap justify-center gap-10">
+                <a class="text-white/40 text-sm hover:text-white transition-colors" href="#">Privacy Policy</a>
+                <a class="text-white/40 text-sm hover:text-white transition-colors" href="#">Terms of Service</a>
+                <a class="text-white/40 text-sm hover:text-white transition-colors" href="contact.html">Support</a>
+                <a class="text-white/40 text-sm hover:text-white transition-colors" href="contact.html">Contact</a>
+            </div>
+            <p class="text-sm text-white/30">© 2024 POMATO. All rights reserved. Designed for the future.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full h-[72px] glass border-t border-white/5 flex justify-around items-center z-50 px-2 pb-safe">
+        <a class="flex flex-col items-center justify-center text-white/40 w-16" href="index.html">
+            <span class="material-symbols-outlined text-[24px] mb-1" data-icon="home">home</span>
+            <span class="text-[10px] font-medium">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-white/40 w-16" href="brand.html">
+            <span class="material-symbols-outlined text-[24px] mb-1" data-icon="category">category</span>
+            <span class="text-[10px] font-medium">Shop</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-white/40 w-16" href="special.html">
+            <span class="material-symbols-outlined text-[24px] mb-1" data-icon="stars">stars</span>
+            <span class="text-[10px] font-medium">Special</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-white/40 w-16" href="contact.html">
+            <span class="material-symbols-outlined text-[24px] mb-1" data-icon="alternate_email">alternate_email</span>
+            <span class="text-[10px] font-medium">Contact</span>
+        </a>
+    </nav>
+
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const profileBtn = document.getElementById('profile-btn');
+            if (profileBtn) {
+                profileBtn.addEventListener('click', () => {
+                    if (window.auth.isAuthenticated()) {
+                        window.location.href = 'profile.html';
+                    } else {
+                        window.location.href = 'login.html';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

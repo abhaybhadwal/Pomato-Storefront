@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#474746",
+                    "tertiary-container": "#6e6d6d",
+                    "primary-fixed-dim": "#b8c3ff",
+                    "background": "#121317",
+                    "on-tertiary-container": "#f3f0ef",
+                    "on-background": "#e3e2e7",
+                    "outline-variant": "#434656",
+                    "inverse-primary": "#124af0",
+                    "primary-fixed": "#dde1ff",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "on-error": "#690005",
+                    "surface-container-lowest": "#0d0e12",
+                    "on-primary-fixed-variant": "#0035be",
+                    "surface-container": "#1e1f23",
+                    "on-secondary-fixed-variant": "#474746",
+                    "surface-dim": "#121317",
+                    "on-secondary-container": "#b7b5b4",
+                    "on-primary-fixed": "#001356",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "error-container": "#93000a",
+                    "surface-bright": "#38393d",
+                    "surface-container-low": "#1a1b1f",
+                    "primary-container": "#2e5bff",
+                    "on-primary": "#002388",
+                    "outline": "#8e90a2",
+                    "error": "#ffb4ab",
+                    "on-surface-variant": "#c4c5d9",
+                    "inverse-on-surface": "#2f3034",
+                    "surface-variant": "#343539",
+                    "secondary": "#c8c6c5",
+                    "tertiary-fixed": "#e5e2e1",
+                    "on-primary-container": "#efefff",
+                    "tertiary-fixed-dim": "#c9c6c5",
+                    "on-secondary": "#313030",
+                    "surface-tint": "#b8c3ff",
+                    "secondary-fixed": "#e5e2e1",
+                    "on-tertiary": "#313030",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "surface-container-high": "#292a2e",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "primary": "#b8c3ff",
+                    "on-error-container": "#ffdad6",
+                    "inverse-surface": "#e3e2e7",
+                    "tertiary": "#c9c6c5",
+                    "on-surface": "#e3e2e7",
+                    "surface": "#121317",
+                    "surface-container-highest": "#343539"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "40px",
+                    "container-margin": "20px",
+                    "sm": "12px",
+                    "md": "24px",
+                    "base": "8px",
+                    "xs": "4px",
+                    "xl": "64px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-xl": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-border { border: 1px solid rgba(255, 255, 255, 0.08); }
+        .inner-glow { box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2); }
+        .ambient-shadow { box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.5); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 border-b border-white/10 bg-zinc-950/80 backdrop-blur-md shadow-2xl shadow-black/50">
+<nav class="flex justify-between items-center h-16 px-6 max-w-full mx-auto">
+<div class="text-xl font-bold tracking-tighter text-white uppercase font-inter">LUXE TECH</div>
+<div class="hidden md:flex items-center gap-8 font-inter tracking-tight">
+<a class="text-blue-500 font-label-md transition-colors" href="#">Home</a>
+<a class="text-zinc-400 font-label-md hover:text-blue-400 transition-colors" href="#">Smartphones</a>
+<a class="text-zinc-400 font-label-md hover:text-blue-400 transition-colors" href="#">Accessories</a>
+<a class="text-zinc-400 font-label-md hover:text-blue-400 transition-colors" href="#">Support</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-zinc-400 hover:text-blue-400 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="p-2 text-zinc-400 hover:text-blue-400 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="p-2 text-zinc-400 hover:text-blue-400 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="pt-24 pb-32 px-container-margin max-w-7xl mx-auto flex flex-col md:flex-row gap-gutter">
+<!-- Sidebar Filters -->
+<aside class="w-full md:w-64 flex-shrink-0 space-y-md">
+<div class="p-md bg-surface-container-low rounded-xl glass-border sticky top-24">
+<h2 class="font-headline-md text-headline-md mb-md text-white">Filters</h2>
+<!-- Brand Filter -->
+<div class="mb-lg">
+<label class="font-label-sm text-label-sm text-outline mb-sm block">BRAND</label>
+<div class="space-y-xs">
+<label class="flex items-center gap-base p-xs hover:bg-white/5 rounded-lg transition-colors cursor-pointer group">
+<input class="rounded-sm bg-surface-container border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span class="text-label-md font-label-md group-hover:text-white transition-colors">Titan Series</span>
+</label>
+<label class="flex items-center gap-base p-xs hover:bg-white/5 rounded-lg transition-colors cursor-pointer group">
+<input class="rounded-sm bg-surface-container border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span class="text-label-md font-label-md group-hover:text-white transition-colors">Zenith Mobile</span>
+</label>
+<label class="flex items-center gap-base p-xs hover:bg-white/5 rounded-lg transition-colors cursor-pointer group">
+<input checked="" class="rounded-sm bg-surface-container border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span class="text-label-md font-label-md text-white">Luxe Core</span>
+</label>
+</div>
+</div>
+<!-- Price Range -->
+<div class="mb-lg">
+<label class="font-label-sm text-label-sm text-outline mb-sm block">PRICE RANGE</label>
+<input class="w-full h-1 bg-surface-variant rounded-full appearance-none cursor-pointer accent-primary-container" type="range"/>
+<div class="flex justify-between mt-xs">
+<span class="text-label-sm font-label-sm">$499</span>
+<span class="text-label-sm font-label-sm">$1,999</span>
+</div>
+</div>
+<!-- OS Filter -->
+<div class="mb-lg">
+<label class="font-label-sm text-label-sm text-outline mb-sm block">OPERATING SYSTEM</label>
+<div class="grid grid-cols-2 gap-xs">
+<button class="py-sm px-base bg-surface-container-highest glass-border rounded-lg text-label-sm font-label-sm text-white">OS 18</button>
+<button class="py-sm px-base bg-surface-container-low glass-border rounded-lg text-label-sm font-label-sm text-zinc-500 hover:border-white/20">Nexus</button>
+</div>
+</div>
+<!-- Storage Filter -->
+<div>
+<label class="font-label-sm text-label-sm text-outline mb-sm block">STORAGE</label>
+<div class="flex flex-wrap gap-xs">
+<span class="px-sm py-xs bg-primary-container/10 text-primary-container text-label-sm font-label-sm rounded-full border border-primary-container/20">128GB</span>
+<span class="px-sm py-xs bg-surface-container-highest text-zinc-400 text-label-sm font-label-sm rounded-full border border-white/5">256GB</span>
+<span class="px-sm py-xs bg-surface-container-highest text-zinc-400 text-label-sm font-label-sm rounded-full border border-white/5">512GB</span>
+<span class="px-sm py-xs bg-surface-container-highest text-zinc-400 text-label-sm font-label-sm rounded-full border border-white/5">1TB</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Product Grid -->
+<div class="flex-1">
+<div class="flex justify-between items-end mb-md">
+<div>
+<h1 class="font-display-xl text-display-xl text-white">Elite Series</h1>
+<p class="text-zinc-500 font-body-md">Showing 12 premium devices</p>
+</div>
+<div class="hidden md:flex gap-base">
+<button class="p-2 glass-border rounded-lg bg-surface-container text-white">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+</button>
+<button class="p-2 glass-border rounded-lg text-zinc-500">
+<span class="material-symbols-outlined" data-icon="view_list">view_list</span>
+</button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Product Card 1 -->
+<div class="bg-[#121212] glass-border rounded-xl p-md flex flex-col group hover:bg-[#181818] transition-all duration-300 ambient-shadow">
+<div class="relative w-full aspect-square mb-md overflow-hidden rounded-lg bg-black">
+<img alt="Luxury Smartphone" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" data-alt="Sleek modern smartphone with titanium finish on deep black background, minimalist studio lighting, high resolution texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLQ5uKsChjQ5gQ7Sr3-wKCFll6ecknSKCC9ZptMWuMhe2GxPw00sbe2Dp6v0fsfUnH1T1l6jrJJAA73DAr8l7_TOdaDgRcQcZVl6MZjGC3gya9AJe2lst-gTGtAX1ZlX_Pm5HbAENpIQBedFYDr0T9vpvk8MEiK5qW5_p69ncCVxOs8tnDFWF1VaH58zbdtmhkjBA42uJBB89BLXHlU_ZKbYAb0-NHroLi-zcZaFoH1SQI8urXdsnmdhJYmbpTC63U7vr-2k7K2qUg"/>
+<div class="absolute top-sm right-sm px-base py-xs bg-primary-container/20 text-primary-container rounded-full text-label-sm font-label-sm backdrop-blur-md">New</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-headline-md text-white">Titan X Pro</h3>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary-container scale-75" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm text-zinc-400">4.9</span>
+</div>
+</div>
+<p class="text-zinc-500 font-label-md mb-md">Midnight Obsidian Edition</p>
+<div class="flex flex-wrap gap-xs mb-md">
+<div class="flex items-center gap-xs px-sm py-xs bg-surface-container-low rounded-lg glass-border">
+<span class="material-symbols-outlined text-[16px]" data-icon="memory">memory</span>
+<span class="text-label-sm font-label-sm text-zinc-300">A18 Pro</span>
+</div>
+<div class="flex items-center gap-xs px-sm py-xs bg-surface-container-low rounded-lg glass-border">
+<span class="material-symbols-outlined text-[16px]" data-icon="photo_camera">photo_camera</span>
+<span class="text-label-sm font-label-sm text-zinc-300">48MP</span>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-headline-md font-headline-md text-white">$1,199</span>
+<button class="bg-primary-container text-white px-md py-sm rounded-full font-label-md inner-glow hover:bg-blue-500 transition-colors active:scale-95 duration-200">
+                            Buy Now
+                        </button>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-[#121212] glass-border rounded-xl p-md flex flex-col group hover:bg-[#181818] transition-all duration-300">
+<div class="relative w-full aspect-square mb-md overflow-hidden rounded-lg bg-black">
+<img alt="Sleek Phone" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" data-alt="Smartphone back panel with multiple cameras reflecting soft blue light, metallic silver finish, sharp focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSsvZC7d1zGV3zDLF9i7CXGkrN47QTLBq_gh9dDYoJzBCJcCXi3dHh2wrRDIiyr551Se5WOuDsxs4fgjFSwTRMt3uYNSkPCd1k-UY-ag_88XhIjj9WHKEDiR-OWOz298xTkXiAuFuzAPXyyVklL6XxfWhjKEg8jNoxOHAiQ4K_cXotMuPHJLZN7nnp9j_zHgqXGfDkrC7oxcqY5adqkQNYe60ezlfcehXpnEoKBlfFWfHxKaKmle4I9-LcHK4aZG2X7J33PfmqJlTf"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-headline-md text-white">Zenith Prime</h3>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary-container scale-75" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm text-zinc-400">4.8</span>
+</div>
+</div>
+<p class="text-zinc-500 font-label-md mb-md">Silver Sterling Finish</p>
+<div class="flex flex-wrap gap-xs mb-md">
+<div class="flex items-center gap-xs px-sm py-xs bg-surface-container-low rounded-lg glass-border">
+<span class="material-symbols-outlined text-[16px]" data-icon="battery_full">battery_full</span>
+<span class="text-label-sm font-label-sm text-zinc-300">5000mAh</span>
+</div>
+<div class="flex items-center gap-xs px-sm py-xs bg-surface-container-low rounded-lg glass-border">
+<span class="material-symbols-outlined text-[16px]" data-icon="display_settings">display_settings</span>
+<span class="text-label-sm font-label-sm text-zinc-300">120Hz</span>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-headline-md font-headline-md text-white">$999</span>
+<button class="bg-white/10 text-white px-md py-sm rounded-full font-label-md glass-border hover:bg-white/20 transition-colors active:scale-95 duration-200">
+                            View Details
+                        </button>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-[#121212] glass-border rounded-xl p-md flex flex-col group hover:bg-[#181818] transition-all duration-300">
+<div class="relative w-full aspect-square mb-md overflow-hidden rounded-lg bg-black">
+<img alt="Foldable Phone" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" data-alt="Premium foldable smartphone partially open, showing vibrant display, cinematic lighting on high-tech hinge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIKy5ug9i_3RT9OVCuTiY786MzqGyW2nOIRMua-O1urm2GaWzm9WQ0BeUDTDn9JO3ckGVI2oOvutNoXI6kS8msd58J_XJUNHWVouud7sHfBzcPqUyo8kyGAT1VEQukDQA9hLGnEq_1fkhLUqWkIyvXlkCv8ouZ1X0KjF1_D6C10YHQKywOKNLnQRFqa01ab1abHHD3HfVWiAE4LQ2CvLGLMnSTkV3D5Y9QSqo2XMlBsvpASkA7OO-hN7cX6mc47J2vNwRMfgdnTpAT"/>
+<div class="absolute top-sm right-sm px-base py-xs bg-error-container/20 text-error rounded-full text-label-sm font-label-sm backdrop-blur-md">Limited</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-headline-md text-white">Nexus Fold V</h3>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary-container scale-75" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm text-zinc-400">4.7</span>
+</div>
+</div>
+<p class="text-zinc-500 font-label-md mb-md">Graphite Gray</p>
+<div class="flex flex-wrap gap-xs mb-md">
+<div class="flex items-center gap-xs px-sm py-xs bg-surface-container-low rounded-lg glass-border">
+<span class="material-symbols-outlined text-[16px]" data-icon="screenshot">screenshot</span>
+<span class="text-label-sm font-label-sm text-zinc-300">Foldable</span>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-headline-md font-headline-md text-white">$1,799</span>
+<button class="bg-primary-container text-white px-md py-sm rounded-full font-label-md inner-glow hover:bg-blue-500 transition-colors active:scale-95 duration-200">
+                            Buy Now
+                        </button>
+</div>
+</div>
+<!-- More products continue with similar pattern... -->
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-4 pb-4 bg-zinc-900/90 backdrop-blur-lg border-t border-white/10 rounded-t-2xl z-50 shadow-[0_-8px_24px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-zinc-500" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px] font-medium font-inter">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-blue-500 bg-blue-500/10 rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span class="text-[10px] font-medium font-inter">Shop</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-[10px] font-medium font-inter">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="text-[10px] font-medium font-inter">Cart</span>
+</a>
+</nav>
+<!-- Footer -->
+<footer class="w-full py-12 px-6 border-t border-white/5 bg-black">
+<div class="flex flex-col items-center gap-8 text-center">
+<div class="text-lg font-black text-white">LUXE TECH</div>
+<div class="flex flex-wrap justify-center gap-md">
+<a class="text-xs text-zinc-500 font-inter hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs text-zinc-500 font-inter hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="text-xs text-zinc-500 font-inter hover:text-white transition-colors" href="#">Support</a>
+<a class="text-xs text-zinc-500 font-inter hover:text-white transition-colors" href="#">Contact</a>
+</div>
+<p class="text-xs text-zinc-500 font-inter">© 2024 LUXE TECH. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

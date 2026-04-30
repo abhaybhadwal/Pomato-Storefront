@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>POMATO - Elite Series</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #030303;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #030303; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #444; }
+
+        /* Glassmorphism utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .glass-card {
+            background: linear-gradient(145deg, rgba(30,30,30,0.4) 0%, rgba(10,10,10,0.4) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Checkbox Logic */
+        .brand-cb:checked + .cb-custom {
+            background-color: #00f2fe;
+            border-color: #00f2fe;
+        }
+        .brand-cb:checked + .cb-custom span {
+            display: block !important;
+            color: #000;
+        }
+
+        /* Hero Animations */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        #brand-hero h1, #brand-hero p, #brand-hero div {
+            animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: { background: "#030303", primary: "#00f2fe" }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-white selection:bg-primary/30 selection:text-white pb-24 md:pb-0 antialiased">
+    
+    <!-- Top Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300 shadow-2xl shadow-black/50">
+        <div class="flex justify-between items-center h-20 px-6 md:px-12 max-w-[1600px] mx-auto">
+            <a href="index.html" class="text-2xl font-black tracking-widest text-white uppercase drop-shadow-lg flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center">
+                    <span class="text-black text-sm material-symbols-outlined">change_history</span>
+                </div>
+                POMATO
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 bg-white/5 px-8 py-3 rounded-full border border-white/10 backdrop-blur-md">
+                <a class="flex items-center text-white/60 text-sm font-medium tracking-wide hover:text-white transition-colors" href="index.html">Home</a>
+                <div class="relative group">
+                    <a href="brand.html" class="flex items-center gap-1 text-white text-sm font-medium tracking-wide transition-colors drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">
+                        Brands <span class="material-symbols-outlined text-sm transition-transform group-hover:rotate-180" data-icon="expand_more">expand_more</span>
+                    </a>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                        <div class="w-64 glass-card rounded-2xl flex flex-col py-3 overflow-hidden transform scale-95 group-hover:scale-100 origin-top transition-transform duration-300 z-50">
+                            <a href="brand.html#apple" class="px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Apple / iPhone</a>
+                            <a href="brand.html#samsung" class="px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Samsung</a>
+                            <a href="brand.html#google" class="px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Google Pixel</a>
+                            <a href="brand.html#oneplus" class="px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">OnePlus</a>
+                            <a href="brand.html#xiaomi" class="px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Xiaomi</a>
+                            <div class="h-px bg-white/10 my-2"></div>
+                            <a href="brand.html" class="px-5 py-2 text-sm text-white hover:bg-white/10 transition-colors font-semibold">View All Brands</a>
+                        </div>
+                    </div>
+                </div>
+                <a class="flex items-center text-white/60 text-sm font-medium tracking-wide hover:text-white transition-colors" href="special.html">Specials</a>
+                <a class="flex items-center text-white/60 text-sm font-medium tracking-wide hover:text-white transition-colors" href="about.html">About</a>
+                <a class="flex items-center text-white/60 text-sm font-medium tracking-wide hover:text-white transition-colors" href="contact.html">Contact Us</a>
+            </div>
+
+            <div class="flex items-center gap-5">
+                <button id="search-btn" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-all active:scale-95">
+                    <span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+                </button>
+                <button id="cart-btn" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center relative text-white/70 hover:text-white hover:bg-white/10 transition-all active:scale-95">
+                    <span class="material-symbols-outlined text-[20px]" data-icon="shopping_cart">shopping_cart</span>
+                    <span id="cart-count" class="absolute -top-1 -right-1 text-[10px] font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-white min-w-[18px] h-[18px] flex items-center justify-center rounded-full shadow-lg pointer-events-none transition-transform duration-200">0</span>
+                </button>
+                <button id="profile-btn" class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-zinc-200 transition-all active:scale-95 hidden md:flex">
+                    <span class="material-symbols-outlined text-[20px]" data-icon="person">person</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-32 px-6 max-w-[1600px] mx-auto flex flex-col xl:flex-row gap-10">
+        <!-- Sidebar Filters -->
+        <aside class="w-full xl:w-80 flex-shrink-0">
+            <div class="sticky top-28 space-y-6">
+                <div class="p-8 glass-card rounded-[2.5rem] relative overflow-hidden group">
+                    <!-- Background Decoration -->
+                    <div class="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/20 rounded-full blur-[80px] group-hover:bg-blue-500/30 transition-all duration-700"></div>
+                    
+                    <div class="relative z-10 space-y-8">
+                        <div>
+                            <h2 class="text-3xl font-black text-white tracking-tight mb-2">Filters</h2>
+                            <div class="h-1 w-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                        </div>
+
+                        <!-- Brand Filter -->
+                        <div class="space-y-4">
+                            <label class="text-[11px] font-bold text-white/40 uppercase tracking-[0.2em] block">Top Brands</label>
+                            <div class="grid grid-cols-1 gap-3" id="brand-filters-container">
+                                <!-- Dynamically Rendered -->
+                            </div>
+                        </div>
+
+                        <!-- OS Filter -->
+                        <div class="space-y-4">
+                            <label class="text-[11px] font-bold text-white/40 uppercase tracking-[0.2em] block">Platform</label>
+                            <div class="flex gap-2 p-1 bg-black/40 rounded-2xl border border-white/5" id="os-filter">
+                                <button type="button" data-os="all" class="flex-1 py-2 rounded-xl text-xs font-bold transition-all active:scale-95 bg-white/10 text-white shadow-lg">All</button>
+                                <button type="button" data-os="ios" class="flex-1 py-2 rounded-xl text-xs font-bold transition-all active:scale-95 text-white/40 hover:text-white">iOS</button>
+                                <button type="button" data-os="android" class="flex-1 py-2 rounded-xl text-xs font-bold transition-all active:scale-95 text-white/40 hover:text-white">Android</button>
+                            </div>
+                        </div>
+
+                        <!-- Storage Filter -->
+                        <div class="space-y-4">
+                            <label class="text-[11px] font-bold text-white/40 uppercase tracking-[0.2em] block">Storage</label>
+                            <div class="flex flex-wrap gap-2" id="storage-filter">
+                                <!-- Dynamically Rendered -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Product Display Area -->
+        <div class="flex-1 space-y-10">
+            <!-- Brand Hero Banner -->
+            <div id="brand-hero" class="relative h-64 md:h-[400px] rounded-[3rem] overflow-hidden group shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+                <!-- Background Image (changes via JS) -->
+                <div class="absolute inset-0 bg-zinc-900 overflow-hidden">
+                    <div class="absolute top-0 right-0 w-full h-full bg-gradient-to-r from-blue-900/50 to-purple-900/50 mix-blend-overlay z-10 transition-all duration-1000 group-hover:scale-105"></div>
+                    <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 z-10 mix-blend-overlay"></div>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent z-20"></div>
+                
+                <div class="relative z-30 h-full flex flex-col justify-center px-10 md:px-16 space-y-4">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-[10px] font-bold text-white uppercase tracking-[0.2em] border border-white/10">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                        Premium Collection
+                    </div>
+                    <h1 id="page-title" class="text-5xl md:text-8xl font-black text-white tracking-tighter leading-none text-gradient">Elite Series</h1>
+                    <p id="page-subtitle" class="text-white/60 text-lg md:text-xl max-w-2xl font-light">Experience the pinnacle of engineering with our curated selection of ultra-premium devices.</p>
+                </div>
+                
+                <!-- Decorative Elements -->
+                <div class="absolute top-1/2 right-12 -translate-y-1/2 hidden lg:flex items-center justify-center z-20">
+                    <div class="w-64 h-64 border border-white/10 rounded-full absolute animate-[spin_20s_linear_infinite]"></div>
+                    <div class="w-48 h-48 border border-white/10 rounded-full absolute animate-[spin_15s_linear_infinite_reverse]"></div>
+                    <span id="hero-icon" class="material-symbols-outlined text-[120px] text-white/20 filter drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">devices</span>
+                </div>
+            </div>
+
+            <!-- Sort and View Options -->
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between px-2 gap-4">
+                <div class="flex items-center gap-4 text-white/50">
+                    <span class="text-xs font-bold uppercase tracking-widest" id="results-count">Showing all products</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <select class="glass border-white/10 rounded-xl px-5 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-500 transition-colors appearance-none pr-10 relative">
+                        <option class="bg-black text-white">Sort by: Popularity</option>
+                        <option class="bg-black text-white">Newest First</option>
+                        <option class="bg-black text-white">Price: Low to High</option>
+                        <option class="bg-black text-white">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+                <!-- Dynamic Content -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-16 px-6 md:px-12 border-t border-white/5 bg-[#030303] relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+        <div class="max-w-[1400px] mx-auto flex flex-col items-center gap-10 text-center relative z-10">
+            <a href="#" class="text-2xl font-black tracking-widest text-white uppercase flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center">
+                    <span class="text-black text-[10px] material-symbols-outlined">change_history</span>
+                </div>
+                POMATO
+            </a>
+            
+            <div class="flex flex-wrap justify-center gap-10">
+                <a class="text-white/40 text-sm hover:text-white transition-colors" href="#">Privacy Policy</a>
+                <a class="text-white/40 text-sm hover:text-white transition-colors" href="#">Terms of Service</a>
+                <a class="text-white/40 text-sm hover:text-white transition-colors" href="#">Support</a>
+                <a class="text-white/40 text-sm hover:text-white transition-colors" href="contact.html">Contact</a>
+            </div>
+            
+            <div class="flex gap-8">
+                <a class="w-10 h-10 rounded-full glass border border-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all" href="#"><span class="material-symbols-outlined text-[18px]">public</span></a>
+                <a class="w-10 h-10 rounded-full glass border border-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all" href="#"><span class="material-symbols-outlined text-[18px]">language</span></a>
+                <a class="w-10 h-10 rounded-full glass border border-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all" href="#"><span class="material-symbols-outlined text-[18px]">alternate_email</span></a>
+            </div>
+            
+            <p class="text-sm text-white/30">© 2024 POMATO. All rights reserved. Designed for the future.</p>
+        </div>
+    </footer>
+
+    <!-- Bottom Navigation Bar (Mobile only) -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full h-[72px] glass border-t border-white/5 flex justify-around items-center z-50 px-2 pb-safe">
+        <a class="flex flex-col items-center justify-center text-white/40 hover:text-white w-16 active:scale-95 transition-all" href="index.html">
+            <span class="material-symbols-outlined text-[24px] mb-1" data-icon="home">home</span>
+            <span class="text-[10px] font-semibold">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-white w-16" href="brand.html">
+            <span class="material-symbols-outlined text-[24px] mb-1 text-blue-400" data-icon="category">category</span>
+            <span class="text-[10px] font-semibold text-blue-400">Shop</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-white/40 hover:text-white w-16 active:scale-95 transition-all" href="special.html">
+            <span class="material-symbols-outlined text-[24px] mb-1" data-icon="stars">stars</span>
+            <span class="text-[10px] font-semibold">Special</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-white/40 hover:text-white w-16 active:scale-95 transition-all" href="contact.html">
+            <span class="material-symbols-outlined text-[24px] mb-1" data-icon="alternate_email">alternate_email</span>
+            <span class="text-[10px] font-semibold">Contact</span>
+        </a>
+    </nav>
+
+    <script src="js/auth.js"></script>
+    <script src="js/currency.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const profileBtn = document.getElementById('profile-btn');
+        if (profileBtn) {
+            profileBtn.addEventListener('click', () => {
+                if (window.auth.isAuthenticated()) {
+                    window.location.href = 'profile.html';
+                } else {
+                    window.location.href = 'login.html';
+                }
+            });
+        }
+        const productGrid = document.getElementById('product-grid');
+        if (!productGrid) return;
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = (urlParams.get('category') || '').toLowerCase();
+        
+        const categoryMeta = {
+            smartphones: { title: 'Smartphones', subtitle: 'Ultra-premium performance and aerospace-grade titanium designs.', icon: 'smartphone' },
+            tablets: { title: 'Tablets', subtitle: 'Your limitless canvas for creation and productivity.', icon: 'tablet_mac' },
+            wearables: { title: 'Watches', subtitle: 'Track your life with unparalleled precision and style.', icon: 'watch' },
+            audio: { title: 'Audio', subtitle: 'High-fidelity, studio-quality sound perfectly isolated.', icon: 'headphones' },
+            accessories: { title: 'Accessories', subtitle: 'Enhance your ecosystem with everyday essentials.', icon: 'devices_other' }
+        };
+        
+        const meta = categoryMeta[category] || { title: 'Elite Series', subtitle: 'Experience the pinnacle of engineering.', icon: 'devices' };
+        
+        const pageTitle = document.getElementById('page-title');
+        const pageSubtitle = document.getElementById('page-subtitle');
+        const heroIcon = document.getElementById('hero-icon');
+        
+        if (pageTitle) pageTitle.textContent = meta.title;
+        if (pageSubtitle) pageSubtitle.textContent = meta.subtitle;
+        if (heroIcon) heroIcon.textContent = meta.icon;
+
+        // Render dynamic filters
+        const brandContainer = document.getElementById('brand-filters-container');
+        const brands = ['Apple', 'Samsung', 'Google', 'OnePlus', 'Xiaomi', 'Asus', 'Nothing', 'Sony'];
+        if (brandContainer) {
+            brandContainer.innerHTML = brands.map(brand => `
+                <label class="flex items-center justify-between p-4 rounded-2xl border border-white/5 bg-white/5 hover:bg-white/10 hover:border-blue-500/50 transition-all cursor-pointer group/brand shadow-lg">
+                    <div class="flex items-center gap-3">
+                        <div class="w-2 h-2 rounded-full bg-white/20 group-hover/brand:bg-blue-400 transition-colors"></div>
+                        <span class="text-sm font-bold text-white/60 group-hover/brand:text-white transition-colors tracking-wide">${brand}</span>
+                    </div>
+                    <input type="checkbox" class="hidden brand-cb" data-brand="${brand.toLowerCase()}">
+                    <div class="w-5 h-5 rounded-md border-2 border-white/10 flex items-center justify-center transition-all group-hover/brand:border-blue-500/50 cb-custom">
+                        <span class="material-symbols-outlined text-[14px] text-black hidden font-black">check</span>
+                    </div>
+                </label>
+            `).join('');
+        }
+
+        const storageContainer = document.getElementById('storage-filter');
+        const storageOptions = ['128GB', '256GB', '512GB', '1TB'];
+        if (storageContainer) {
+            storageContainer.innerHTML = storageOptions.map(s => `
+                <button type="button" data-storage="${s}" class="flex-1 min-w-[70px] px-3 py-2 bg-white/5 hover:bg-blue-500 hover:text-white border border-white/5 rounded-xl text-xs font-bold transition-all active:scale-95 text-white/50 uppercase">${s}</button>
+            `).join('');
+        }
+
+        // Only used for the "Browse All" views.
+        const maxItemsByCategory = { smartphones: 50 };
+
+        let osSelected = 'all';
+        const osFilterEl = document.getElementById('os-filter');
+        const osButtons = osFilterEl ? osFilterEl.querySelectorAll('button[data-os]') : [];
+        function setOsButtonStyles(next) {
+            osButtons.forEach(btn => {
+                const val = (btn.getAttribute('data-os') || '').toLowerCase();
+                const isActive = val === next;
+                if (isActive) {
+                    btn.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all active:scale-95 bg-white/10 text-white shadow-lg';
+                } else {
+                    btn.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all active:scale-95 text-white/40 hover:text-white';
+                }
+            });
+        }
+        setOsButtonStyles(osSelected);
+        osButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                osSelected = (btn.getAttribute('data-os') || '').toLowerCase();
+                window.location.hash = 'all';
+                setOsButtonStyles(osSelected);
+                filterProducts();
+            });
+        });
+
+        // Storage filter
+        function storageFromProduct(product) {
+            const id = String(product?.id || '');
+            let hash = 0;
+            for (let i = 0; i < id.length; i++) hash = (hash * 31 + id.charCodeAt(i)) >>> 0;
+            return storageOptions[hash % storageOptions.length];
+        }
+
+        let storageSelected = 'all';
+        const storageFilterEl = document.getElementById('storage-filter');
+        const storageButtons = storageFilterEl ? storageFilterEl.querySelectorAll('button[data-storage]') : [];
+        function setStorageButtonStyles(next) {
+            storageButtons.forEach(btn => {
+                const val = btn.getAttribute('data-storage') || '';
+                const isActive = val === next;
+                if(isActive) {
+                    btn.classList.add('bg-blue-500', 'text-white', 'border-blue-500');
+                    btn.classList.remove('bg-white/5', 'text-white/50');
+                } else {
+                    btn.classList.remove('bg-blue-500', 'text-white', 'border-blue-500');
+                    btn.classList.add('bg-white/5', 'text-white/50');
+                }
+            });
+        }
+        setStorageButtonStyles(storageSelected);
+
+        storageButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const next = btn.getAttribute('data-storage') || 'all';
+                storageSelected = (storageSelected === next) ? 'all' : next;
+                window.location.hash = 'all';
+                setStorageButtonStyles(storageSelected);
+                filterProducts();
+            });
+        });
+
+        function renderProducts(filteredProducts) {
+            productGrid.innerHTML = '';
+            if(filteredProducts.length === 0) {
+                productGrid.innerHTML = `<div class="col-span-full text-center py-32 glass-card rounded-[3rem]"><p class="text-white/40 font-bold uppercase tracking-widest text-lg">No devices found in this category.</p></div>`;
+                return;
+            }
+            
+            filteredProducts.forEach(product => {
+                const numericPrice = product.price || 0;
+                const discountPrice = Math.floor(numericPrice * 0.9); // Default 10% off for brand page
+                const savings = numericPrice - discountPrice;
+                const formattedDiscount = window.currency.format(discountPrice);
+                const formattedOriginal = window.currency.format(numericPrice);
+                const formattedSavings = window.currency.format(savings);
+
+                const card = document.createElement('div');
+                card.id = product.id;
+                card.className = "group relative glass-card rounded-[2.5rem] overflow-hidden hover:border-blue-500/30 transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,242,254,0.1)] hover:-translate-y-2 flex flex-col h-full";
+                
+                card.innerHTML = `
+                    <!-- Badges -->
+                    <div class="absolute top-6 left-6 z-20 flex flex-col gap-2">
+                        ${product.badge ? `<div class="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full shadow-lg uppercase tracking-widest">${product.badge}</div>` : ''}
+                    </div>
+                    
+                    <div class="p-8 flex flex-col h-full">
+                        <!-- Image Area -->
+                        <div class="relative w-full aspect-square mb-8 flex items-center justify-center bg-black/40 rounded-[2rem] overflow-hidden border border-white/5 group-hover:border-white/10 transition-colors">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
+                            <img
+                                alt="${product.name}"
+                                class="relative z-10 w-[85%] h-[85%] object-contain transform group-hover:scale-110 transition-all duration-700 drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]"
+                                src="${product.image}"
+                                onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22500%22 viewBox=%220 0 400 500%22><rect width=%22400%22 height=%22500%22 fill=%22%23090909%22/><rect x=%22110%22 y=%2230%22 width=%22180%22 height=%22440%22 rx=%2230%22 ry=%2230%22 fill=%22%23141414%22 stroke=%22%23333333%22 stroke-width=%224%22/><circle cx=%22200%22 cy=%2270%22 r=%226%22 fill=%22%23444444%22/><text x=%22200%22 y=%22260%22 fill=%22%23888888%22 font-family=%22Arial,sans-serif%22 font-size=%2220%22 text-anchor=%22middle%22>Image unavailable</text></svg>'"
+                            />
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-white font-black text-2xl leading-tight group-hover:text-blue-400 transition-colors tracking-tight">${product.name}</h3>
+                                    <div class="flex items-center gap-2 mt-2">
+                                        <span class="text-[11px] text-white/40 font-bold uppercase tracking-widest">${product.brand}</span>
+                                        <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+                                        <span class="text-[11px] text-white/40 font-bold tracking-wider">${storageFromProduct(product)}</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-1 bg-white/10 px-3 py-1.5 rounded-xl border border-white/10 backdrop-blur-md">
+                                    <span class="material-symbols-outlined text-yellow-400 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                                    <span class="text-xs font-black text-white">${product.rating}</span>
+                                </div>
+                            </div>
+
+                            <p class="text-white/50 text-sm font-light line-clamp-2 min-h-[2.5rem] mb-6">${product.feature || 'Premium flagship experience with cutting-edge technology.'}</p>
+
+                            <div class="mt-auto">
+                                <div class="pt-6 border-t border-white/10 flex items-end justify-between mb-6">
+                                    <div class="flex flex-col">
+                                        <span class="text-white/30 text-xs line-through font-bold mb-1">${formattedOriginal}</span>
+                                        <span class="text-white font-black text-3xl tracking-tighter text-gradient">${formattedDiscount}</span>
+                                    </div>
+                                    <div class="bg-green-500/10 text-green-400 text-[11px] font-black px-3 py-1.5 rounded-lg border border-green-500/20">
+                                        SAVE ${formattedSavings}
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-4">
+                                    <button type="button" data-cart-add="${product.id}" class="glass hover:bg-white/10 text-white py-4 rounded-2xl text-[12px] font-black transition-all active:scale-95 flex items-center justify-center gap-2 add-to-cart-btn">
+                                        <span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+                                        CART
+                                    </button>
+                                    <a href="checkout.html?buy=${product.id}" class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white py-4 rounded-2xl text-[12px] font-black transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] active:scale-95 text-center flex items-center justify-center">
+                                        BUY NOW
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                productGrid.appendChild(card);
+            });
+        }
+
+        function filterProducts() {
+            let hash = window.location.hash.substring(1).toLowerCase();
+            let filtered = typeof productsData !== 'undefined' ? productsData : [];
+
+            // Apply category filter logic for HD products
+            if (category === 'tablets') {
+                filtered = filtered.filter(p => p.category === 'tablets');
+            } else if (category === 'wearables') {
+                filtered = filtered.filter(p => p.category === 'accessories' && p.type === 'watch');
+            } else if (category === 'audio') {
+                filtered = filtered.filter(p => p.category === 'accessories' && p.type === 'audio');
+            } else if (category === 'accessories') {
+                filtered = filtered.filter(p => p.category === 'accessories');
+            } else {
+                filtered = filtered.filter(p => p.category === 'smartphones');
+            }
+
+            if (hash && hash !== 'all') {
+                filtered = filtered.filter(p => p.brand.toLowerCase() === hash || p.name.toLowerCase().includes(hash));
+            }
+
+            if (osSelected === 'ios') {
+                filtered = filtered.filter(p => p.brand.toLowerCase() === 'apple');
+            } else if (osSelected === 'android') {
+                filtered = filtered.filter(p => p.brand.toLowerCase() !== 'apple');
+            }
+
+            if (storageSelected !== 'all') {
+                filtered = filtered.filter(p => storageFromProduct(p) === storageSelected);
+            }
+
+            if (maxItemsByCategory[category]) {
+                filtered = filtered.slice(0, maxItemsByCategory[category]);
+            }
+
+            const resultsCountEl = document.getElementById('results-count');
+            if(resultsCountEl) {
+                resultsCountEl.textContent = `Showing ${filtered.length} ${meta.title.toLowerCase()}`;
+            }
+
+            renderProducts(filtered);
+            
+            // Update Sidebar Checkbox UI
+            document.querySelectorAll('.brand-cb').forEach(cb => {
+                const brand = cb.getAttribute('data-brand');
+                const customBox = cb.nextElementSibling;
+                const checkIcon = customBox.querySelector('span');
+                const label = cb.closest('label').querySelector('span');
+                
+                if (hash === brand) {
+                    cb.checked = true;
+                    customBox.classList.add('bg-blue-400', 'border-blue-400');
+                    checkIcon.classList.remove('hidden');
+                    label.classList.add('text-white');
+                } else {
+                    cb.checked = false;
+                    customBox.classList.remove('bg-blue-400', 'border-blue-400');
+                    checkIcon.classList.add('hidden');
+                    label.classList.remove('text-white');
+                }
+            });
+        }
+
+        // Event Listeners
+        document.querySelectorAll('.brand-cb').forEach(cb => {
+            cb.closest('label').addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent double firing from label+input
+                const brand = cb.getAttribute('data-brand');
+                window.location.hash = (window.location.hash.substring(1) === brand) ? 'all' : brand;
+                filterProducts();
+            });
+        });
+
+        filterProducts();
+        window.addEventListener('hashchange', filterProducts);
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Contact Us - POMATO</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #030303;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #030303; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #444; }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .glass-card {
+            background: linear-gradient(145deg, rgba(30,30,30,0.4) 0%, rgba(10,10,10,0.4) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-blue {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .input-glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .input-glass:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 242, 254, 0.5);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
+            outline: none;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: { background: "#030303", primary: "#00f2fe" }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-white selection:bg-primary/30 selection:text-white pb-24 md:pb-0 antialiased">
+    
+    <!-- Top Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300">
+        <div class="flex justify-between items-center h-20 px-6 md:px-12 max-w-[1400px] mx-auto">
+            <a href="index.html" class="text-2xl font-black tracking-widest text-white uppercase drop-shadow-lg flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center">
+                    <span class="text-black text-sm material-symbols-outlined">change_history</span>
+                </div>
+                POMATO
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 bg-white/5 px-8 py-3 rounded-full border border-white/10 backdrop-blur-md">
+                <a class="flex items-center text-white/60 text-sm font-medium tracking-wide hover:text-white transition-colors" href="index.html">Home</a>
+                <div class="relative group">
+                    <a href="brand.html" class="flex items-center gap-1 text-white/60 text-sm font-medium tracking-wide hover:text-white transition-colors">
+                        Brands <span class="material-symbols-outlined text-sm transition-transform group-hover:rotate-180" data-icon="expand_more">expand_more</span>
+                    </a>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                        <div class="w-64 glass-card rounded-2xl flex flex-col py-3 overflow-hidden transform scale-95 group-hover:scale-100 origin-top transition-transform duration-300">
+                            <a href="brand.html#apple" class="px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Apple / iPhone</a>
+                            <a href="brand.html#samsung" class="px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Samsung</a>
+                            <a href="brand.html#google" class="px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Google Pixel</a>
+                            <a href="brand.html#oneplus" class="px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">OnePlus</a>
+                            <a href="brand.html#xiaomi" class="px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Xiaomi</a>
+                            <div class="h-px bg-white/10 my-2"></div>
+                            <a href="brand.html" class="px-5 py-2 text-sm text-white hover:bg-white/10 transition-colors font-semibold">View All Brands</a>
+                        </div>
+                    </div>
+                </div>
+                <a class="flex items-center text-white/60 text-sm font-medium tracking-wide hover:text-white transition-colors" href="special.html">Specials</a>
+                <a class="flex items-center text-white/60 text-sm font-medium tracking-wide hover:text-white transition-colors" href="about.html">About</a>
+                <a class="flex items-center text-white text-sm font-semibold tracking-wide" href="contact.html">Contact Us</a>
+            </div>
+
+            <div class="flex items-center gap-5">
+                <button id="search-btn" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-all active:scale-95">
+                    <span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+                </button>
+                <button id="cart-btn" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center relative text-white/70 hover:text-white hover:bg-white/10 transition-all active:scale-95">
+                    <span class="material-symbols-outlined text-[20px]" data-icon="shopping_cart">shopping_cart</span>
+                    <span id="cart-count" class="absolute -top-1 -right-1 text-[10px] font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-white min-w-[18px] h-[18px] flex items-center justify-center rounded-full shadow-lg pointer-events-none transition-transform duration-200">0</span>
+                </button>
+                <button id="profile-btn" class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-zinc-200 transition-all active:scale-95 hidden md:flex">
+                    <span class="material-symbols-outlined text-[20px]" data-icon="person">person</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative py-24 overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full filter blur-[100px] animate-blob"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full filter blur-[100px] animate-blob animation-delay-2000"></div>
+            </div>
+            
+            <div class="relative z-10 max-w-[1200px] mx-auto px-6 text-center">
+                <h1 class="text-6xl md:text-7xl font-black mb-6 tracking-tighter">
+                    <span class="text-gradient">Get in</span>
+                    <span class="text-gradient-blue">Touch.</span>
+                </h1>
+                <p class="text-xl text-white/60 max-w-2xl mx-auto font-light leading-relaxed">
+                    Have questions about a product or your order? Our expert team is here to help you 24/7.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Form & Info -->
+        <section class="py-12 max-w-[1400px] mx-auto px-6 md:px-12 mb-32">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="glass-card rounded-[2.5rem] p-8 md:p-12">
+                    <h2 class="text-3xl font-bold mb-8">Send a Message</h2>
+                    <form class="space-y-6" action="notify.html">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-sm font-semibold text-white/40 uppercase tracking-widest ml-1">Full Name</label>
+                                <input type="text" placeholder="John Doe" class="w-full px-6 py-4 rounded-2xl input-glass" required />
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-semibold text-white/40 uppercase tracking-widest ml-1">Email Address</label>
+                                <input type="email" placeholder="john@example.com" class="w-full px-6 py-4 rounded-2xl input-glass" required />
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-white/40 uppercase tracking-widest ml-1">Subject</label>
+                            <input type="text" placeholder="Product Inquiry" class="w-full px-6 py-4 rounded-2xl input-glass" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-white/40 uppercase tracking-widest ml-1">Message</label>
+                            <textarea id="message_box" rows="5" placeholder="How can we help you today?" class="w-full px-6 py-4 rounded-2xl input-glass resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-5 bg-white text-black rounded-2xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="flex flex-col justify-between py-6">
+                    <div class="space-y-12">
+                        <div>
+                            <h2 class="text-3xl font-bold mb-8">Contact Information</h2>
+                            <div class="space-y-8">
+                                <div class="flex items-start gap-6 group">
+                                    <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                        <span class="material-symbols-outlined text-blue-400">location_on</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold mb-1 text-white">Our Headquarters</h4>
+                                        <p class="text-white/50 font-light">Bus Stand Kangra<br/>Himachal Pradesh Pincode 176206</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-6 group">
+                                    <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                        <span class="material-symbols-outlined text-purple-400">mail</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold mb-1 text-white">Email Us</h4>
+                                        <p class="text-white/50 font-light">prince54918@gmail.com</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-6 group">
+                                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                        <span class="material-symbols-outlined text-emerald-400">phone</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold mb-1 text-white">Call Anytime</h4>
+                                        <p class="text-white/50 font-light">+91 9816708876</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-lg font-bold mb-6 text-white">Follow Us</h4>
+                            <div class="flex gap-4">
+                                <a href="#" class="w-12 h-12 rounded-xl glass border border-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all">
+                                    <span class="material-symbols-outlined text-xl">public</span>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-xl glass border border-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all">
+                                    <span class="material-symbols-outlined text-xl">language</span>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-xl glass border border-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all">
+                                    <span class="material-symbols-outlined text-xl">alternate_email</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Google Map Location -->
+                    <div class="mt-12 rounded-[2rem] border border-white/10 overflow-hidden h-[300px] relative group shadow-2xl">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13575.474665492!2d76.257007!3d32.100657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3904b5a26639739d%3A0xc0c8742d45b406e2!2sKangra%2C%20Himachal%20Pradesh!5e0!3m2!1sen!2sin!4v1714501234567!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; filter: grayscale(1) invert(0.9) contrast(1.2) opacity(0.8);" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="group-hover:filter-none transition-all duration-700">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-16 px-6 md:px-12 border-t border-white/5 bg-[#030303] relative overflow-hidden">
+        <div class="max-w-[1400px] mx-auto flex flex-col items-center gap-10 text-center">
+            <a href="index.html" class="text-2xl font-black tracking-widest text-white uppercase flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center">
+                    <span class="text-black text-[10px] material-symbols-outlined">change_history</span>
+                </div>
+                POMATO
+            </a>
+            <div class="flex flex-wrap justify-center gap-10">
+                <a class="text-white/40 text-sm hover:text-white transition-colors" href="#">Privacy Policy</a>
+                <a class="text-white/40 text-sm hover:text-white transition-colors" href="#">Terms of Service</a>
+                <a class="text-white/40 text-sm hover:text-white transition-colors" href="contact.html">Support</a>
+                <a class="text-white/40 text-sm hover:text-white transition-colors" href="contact.html">Contact</a>
+            </div>
+            <p class="text-sm text-white/30">© 2024 POMATO. All rights reserved. Designed for the future.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full h-[72px] glass border-t border-white/5 flex justify-around items-center z-50 px-2 pb-safe">
+        <a class="flex flex-col items-center justify-center text-white/40 w-16" href="index.html">
+            <span class="material-symbols-outlined text-[24px] mb-1" data-icon="home">home</span>
+            <span class="text-[10px] font-medium">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-white/40 w-16" href="brand.html">
+            <span class="material-symbols-outlined text-[24px] mb-1" data-icon="category">category</span>
+            <span class="text-[10px] font-medium">Shop</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-white/40 w-16" href="special.html">
+            <span class="material-symbols-outlined text-[24px] mb-1" data-icon="stars">stars</span>
+            <span class="text-[10px] font-medium">Special</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-white w-16" href="contact.html">
+            <span class="material-symbols-outlined text-[24px] mb-1 text-blue-400" data-icon="alternate_email">alternate_email</span>
+            <span class="text-[10px] font-medium text-blue-400">Contact</span>
+        </a>
+    </nav>
+
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const profileBtn = document.getElementById('profile-btn');
+            if (profileBtn) {
+                profileBtn.addEventListener('click', () => {
+                    if (window.auth.isAuthenticated()) {
+                        window.location.href = 'profile.html';
+                    } else {
+                        window.location.href = 'login.html';
+                    }
+                });
+            }
+
+            // Check for 'buy' parameter to pre-fill the message
+            const urlParams = new URLSearchParams(window.location.search);
+            const buyProduct = urlParams.get('buy');
+            if (buyProduct) {
+                let productName = buyProduct.replace(/_/g, ' ');
+                if (productName === 'banner promo') {
+                    document.getElementById('message_box').value = "I am interested in your current banner promotions and discounts.";
+                } else {
+                    document.getElementById('message_box').value = "I am interested in buying the " + productName + ". Please provide more details.";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

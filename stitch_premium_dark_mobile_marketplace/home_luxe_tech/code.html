@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#474746",
+                        "tertiary-container": "#6e6d6d",
+                        "primary-fixed-dim": "#b8c3ff",
+                        "background": "#050505",
+                        "on-tertiary-container": "#f3f0ef",
+                        "on-background": "#e3e2e7",
+                        "outline-variant": "#434656",
+                        "inverse-primary": "#124af0",
+                        "primary-fixed": "#dde1ff",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0d0e12",
+                        "on-primary-fixed-variant": "#0035be",
+                        "surface-container": "#121212",
+                        "on-secondary-fixed-variant": "#474746",
+                        "surface-dim": "#121317",
+                        "on-secondary-container": "#b7b5b4",
+                        "on-primary-fixed": "#001356",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "error-container": "#93000a",
+                        "surface-bright": "#38393d",
+                        "surface-container-low": "#1a1b1f",
+                        "primary-container": "#2e5bff",
+                        "on-primary": "#002388",
+                        "outline": "#8e90a2",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#c4c5d9",
+                        "inverse-on-surface": "#2f3034",
+                        "surface-variant": "#343539",
+                        "secondary": "#c8c6c5",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-primary-container": "#efefff",
+                        "tertiary-fixed-dim": "#c9c6c5",
+                        "on-secondary": "#313030",
+                        "surface-tint": "#b8c3ff",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-tertiary": "#313030",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "surface-container-high": "#1c1c1e",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "primary": "#b8c3ff",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#e3e2e7",
+                        "tertiary": "#c9c6c5",
+                        "on-surface": "#e3e2e7",
+                        "surface": "#121317",
+                        "surface-container-highest": "#343539"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "container-margin": "20px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "xl": "64px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-xl": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background selection:bg-primary-container selection:text-white pb-24 md:pb-0">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-zinc-950/80 backdrop-blur-md shadow-2xl shadow-black/50">
+<div class="flex justify-between items-center h-16 px-6 max-w-full mx-auto">
+<div class="text-xl font-bold tracking-tighter text-white uppercase font-inter">LUXE TECH</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-blue-500 font-label-md text-label-md hover:text-blue-400 transition-colors" href="#">Home</a>
+<a class="text-zinc-400 font-label-md text-label-md hover:text-blue-400 transition-colors" href="#">Shop</a>
+<a class="text-zinc-400 font-label-md text-label-md hover:text-blue-400 transition-colors" href="#">Explore</a>
+<a class="text-zinc-400 font-label-md text-label-md hover:text-blue-400 transition-colors" href="#">Support</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-zinc-400 hover:text-blue-400 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-zinc-400 hover:text-blue-400 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="text-zinc-400 hover:text-blue-400 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative h-[870px] w-full flex items-center justify-center overflow-hidden px-container-margin">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60" data-alt="Sleek black flagship smartphone held against a dark studio background with dramatic rim lighting and subtle blue glows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqyp9bMQNzBHwAOmLBJu40DwCfRquGi5Sh70z-N-fKMuD7h1tBTNHokpCIwuytySLz5Z6Mszh5XU0VZFrJAGOEuG9Rah2iFXqpx1GCBKme2GcAyWVVcT6gwRpNnp4IQrxuGnrU4VSZ3zxV9WUZjkKT1EdIlMeTOUcB3fMkmg2k3PVLjHoT7y_LBzonp04UahBJOnk47-AvKplvGs2HhNblP5zvqWa2N38OjZYA38Y0UkDiPmSxgU8y5MvS88D2xm6ErvMKMzFxDe-X"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background"></div>
+</div>
+<div class="relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center">
+<span class="inline-block px-4 py-1.5 rounded-full bg-primary-container/10 border border-primary/20 text-primary font-label-sm text-label-sm mb-6">
+                    LATEST INNOVATION
+                </span>
+<h1 class="font-display-xl text-display-xl mb-6 text-white leading-tight">Vanguard X1 Ultra</h1>
+<p class="font-body-lg text-body-lg text-zinc-400 max-w-2xl mb-10">
+                    Experience the pinnacle of mobile engineering. Titanium architecture, neural imaging, and an infinite display.
+                </p>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="bg-primary-container text-on-primary-container px-8 py-4 rounded-full font-label-md text-label-md hover:brightness-110 transition-all shadow-lg shadow-blue-500/20 active:scale-95 border-t border-white/20">
+                        Pre-order Now
+                    </button>
+<button class="bg-transparent text-white border border-white/15 px-8 py-4 rounded-full font-label-md text-label-md hover:bg-white/5 transition-all active:scale-95">
+                        Learn More
+                    </button>
+</div>
+</div>
+</section>
+<!-- Featured Categories -->
+<section class="py-xl px-container-margin max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-white">Categories</h2>
+<p class="font-body-md text-body-md text-zinc-500">Tailored tech for every lifestyle.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Category Card: Smartphones -->
+<div class="group relative aspect-[4/5] rounded-xl overflow-hidden border border-white/10 bg-surface-container shadow-2xl transition-transform hover:-translate-y-1">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-70" data-alt="Collection of modern slim smartphones arranged neatly on a dark matte surface with professional studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWBmIkuoRwBFAeXqLZpipTWWLW_XezPDJq6K_P91t3cE9deM1LXJkU5JQb6PR5HaTCtRF5w6lr76acHr2yoQny7wn6a7XOW86Svlpk8Zt5oKoNf_1SUOk8VaQ_Cgle1sdByWEmDMjPqFXedZWv3HKipivYLmCgi2xfdeIPQ2Nfw44JcYqxKhsTb1LadWEgz7RmqcxuG62Mzd-CoL1b_OXjj2aE8zHqh3QXPhKqI1zDXwAjae-ksatXZ1v9wfHP60sJLjHZMe3Z_bLW"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-md w-full">
+<h3 class="font-headline-md text-headline-md text-white mb-2">Smartphones</h3>
+<p class="font-body-md text-body-md text-zinc-400 mb-4">Precision crafted performance.</p>
+<a href="brand.html?category=smartphones" class="text-primary font-label-md flex items-center gap-2 group-hover:gap-3 transition-all">
+                            Browse All <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Category Card: Tablets -->
+<div class="group relative aspect-[4/5] rounded-xl overflow-hidden border border-white/10 bg-surface-container shadow-2xl transition-transform hover:-translate-y-1">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-70" data-alt="Professional tablet with stylus pen on a designer's desk with soft ambient lighting and clean workspace aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjApiI6rYKV_5qCKw6QBEJtTUVSngRmna2EJ5UjR4t7GzASqW50PRRg3UvDXE5BwAtYlgHBkntBQIDGzyUGB2W_aRDfOPbcD7AkJ5RG8W1NDlNmdj4P_O2fp7anOvopmheY_-HY2-I7A3syuLkKTNlo6ODeRgoRUJJYd_H4CmYbJpf2H65oC_un2x3dxzsqlI_KRyrrxDygMxUic2YTRbMRsE9XzFoWV8wne185EFi9UvBgWV_IArPf-sXMOl0obulpi1F7VxcaIfO"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-md w-full">
+<h3 class="font-headline-md text-headline-md text-white mb-2">Tablets</h3>
+<p class="font-body-md text-body-md text-zinc-400 mb-4">Your canvas for productivity.</p>
+<a href="brand.html?category=tablets" class="text-primary font-label-md flex items-center gap-2 group-hover:gap-3 transition-all">
+                            Browse All <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Category Card: Accessories -->
+<div class="group relative aspect-[4/5] rounded-xl overflow-hidden border border-white/10 bg-surface-container shadow-2xl transition-transform hover:-translate-y-1">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-70" data-alt="High-end noise cancelling headphones and smartwatch close-up with metallic textures and professional studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlxZDmvT6E5bffdbnpu-PcHDr6RZk_x6LOPl4jgTXTFAt3FLk-kJjK_acwJediUVsDba4c4UOQcVa8cB39NqDG_uNT7unHmQ-CWzmo6mlaokL_8d6ylm6B6x81kwylJceXAagyDd0b-moq8PZpl75TsKxbuywkhxBpspUp5HmbXn1ZJBpK1VcBHJpOeypsxUKXVbyrOc4uN5oQQkDxpDfKUdM4iOeRXy62g8WGvxdxVXHtFBUfONtSt42coghZgBqZKVzlWeBAElP7"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-md w-full">
+<h3 class="font-headline-md text-headline-md text-white mb-2">Accessories</h3>
+<p class="font-body-md text-body-md text-zinc-400 mb-4">Enhance your ecosystem.</p>
+<a href="brand.html?category=accessories" class="text-primary font-label-md flex items-center gap-2 group-hover:gap-3 transition-all">
+                            Browse All <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Top Deals Section - Bento Grid Style -->
+<section class="py-xl bg-surface-container-lowest">
+<div class="px-container-margin max-w-7xl mx-auto">
+<div class="mb-lg">
+<span class="text-primary font-label-sm tracking-widest uppercase mb-2 block">Limited Time</span>
+<h2 class="font-headline-lg text-headline-lg text-white">Top Deals</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Main Featured Deal -->
+<div class="md:col-span-2 md:row-span-2 bg-surface-container p-lg rounded-xl border border-white/5 relative overflow-hidden flex flex-col justify-between group">
+<div class="relative z-10">
+<span class="bg-red-500/10 text-red-500 border border-red-500/20 px-3 py-1 rounded-full text-label-sm mb-4 inline-block">SAVE $200</span>
+<h3 class="font-headline-md text-headline-md text-white mb-2">Vanguard Pro Gen 2</h3>
+<p class="font-body-md text-zinc-400 mb-6 max-w-xs">The legendary performance now at an unbeatable price point.</p>
+<button class="bg-white text-black px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-zinc-200 active:scale-95 transition-all">
+                                Shop Now
+                            </button>
+</div>
+<img class="absolute right-[-10%] bottom-[-10%] w-3/4 object-contain transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-3" data-alt="Luxury flagship smartphone showing a high-resolution display with vibrant colors and sleek metal frame" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTD_767diLOP7OMkbHWGbIE8zqEBxRxy0vPD2A00mAyCR7uKxgl188l8l1fkCBl3X05g5eFZORk6GuUrgbeZYW0Mrm0a1ptuqBKmWB9C6QX5da9qhk2Z8qjphcC_S5NRhWOaCg9e0cQwAVYGONUk9f_DL2Esk2fdP2oukPQXzT955JWtcRqLL6iOmFoEBxtrSxQkXIN0iAWMZ02lYojfvrOfUUFYnyXTN2i4FZtJK740w3ZYFJG2_0ilYyzXrQYoH7eADOlr_py9xt"/>
+</div>
+<!-- Small Deal 1 -->
+<div class="md:col-span-2 bg-surface-container p-md rounded-xl border border-white/5 flex items-center gap-md group hover:border-white/10 transition-colors">
+<div class="flex-1">
+<h4 class="font-label-md text-white mb-1">AeroBuds Pro</h4>
+<p class="text-primary font-bold mb-3">$149 <span class="text-zinc-500 line-through text-xs font-normal">$199</span></p>
+<button class="text-zinc-400 text-sm font-label-md border-b border-zinc-700 hover:text-white hover:border-white transition-all">Quick Add</button>
+</div>
+<div class="w-32 h-32 bg-background rounded-lg border border-white/5 overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="Minimalist white wireless earbuds in their charging case with soft lighting and clean shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCntFAxXgOC6muR5h2KnVTJa2mGCGLKT_kVdwNtjH9tbfyU8y1qfxm6DrHhxvq5VsQSgEuinGGIP4EnuApbeqjgeN6bGswJcRtMJDp2bo-9w-VjjBe5n0i424TpPhlOrhWZCw-P4NhzoEjnpsLQHwW_zWViYi_fPEV9CvAVIcsShs-Cr27j_1mjaSgPR2rAksTFxgRNwquUtO8Gf1F-kWY5ZgDCg2dTuzGjpJYecAoKeikaxvnM4AtYwNsxiKtP9c78nBsQ7VLjyavx"/>
+</div>
+</div>
+<!-- Small Deal 2 -->
+<div class="md:col-span-2 bg-surface-container p-md rounded-xl border border-white/5 flex items-center gap-md group hover:border-white/10 transition-colors">
+<div class="flex-1">
+<h4 class="font-label-md text-white mb-1">Titan Watch S</h4>
+<p class="text-primary font-bold mb-3">$299 <span class="text-zinc-500 line-through text-xs font-normal">$349</span></p>
+<button class="text-zinc-400 text-sm font-label-md border-b border-zinc-700 hover:text-white hover:border-white transition-all">Quick Add</button>
+</div>
+<div class="w-32 h-32 bg-background rounded-lg border border-white/5 overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="Elegant smartwatch with black band and metallic watch face displaying a digital health interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoiNVLE_u2Z9HEZDHVDpcaL4e9w7LZPzIXFEOdKUyIJEfMzObkCEOTJtpLnBQyZJHbLwYnquv9kF5PnViSLWVDy63dwFHUFGT6LZjgnNWe36Dm7BDGyrz8RH4n8uKHP-FBTYvx5yJHpdGIoKR1nqDO9aSMu8-FFGe7bdKo_XHB-FwUzGMqWcswkYzOOQPjg19EFO7_D8DhA4bULm8SpsaQ2_t38ieqMm3_p0FCH4T0SbWMyKC0-pgR_RWX4a96gxf1d2rcawVs46Z-"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / CTA -->
+<section class="py-xl px-container-margin">
+<div class="max-w-5xl mx-auto rounded-3xl bg-primary-container p-lg md:p-xl flex flex-col md:flex-row items-center gap-md relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+<div class="flex-1 relative z-10">
+<h2 class="font-display-xl text-display-xl text-on-primary-container mb-4">Stay ahead of the curve.</h2>
+<p class="font-body-md text-on-primary-container/80 mb-6">Join our elite list for early access to product launches and exclusive member-only pricing.</p>
+<form class="flex flex-col sm:flex-row gap-base max-w-md">
+<input class="flex-1 bg-black/20 border-white/20 rounded-full px-6 py-3 text-white placeholder:text-white/50 focus:ring-2 focus:ring-white/30 focus:border-transparent" placeholder="Enter your email" type="email"/>
+<button class="bg-white text-primary-container px-8 py-3 rounded-full font-label-md hover:bg-zinc-100 transition-colors active:scale-95" type="submit">Subscribe</button>
+</form>
+</div>
+<div class="hidden md:block w-1/3 relative z-10">
+<span class="material-symbols-outlined text-[160px] text-white/20 select-none">send</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-6 border-t border-white/5 bg-black">
+<div class="flex flex-col items-center gap-8 text-center">
+<div class="text-lg font-black text-white font-inter">LUXE TECH</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-zinc-500 text-xs font-inter hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-zinc-500 text-xs font-inter hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="text-zinc-500 text-xs font-inter hover:text-white transition-colors" href="#">Support</a>
+<a class="text-zinc-500 text-xs font-inter hover:text-white transition-colors" href="#">Contact</a>
+</div>
+<div class="flex gap-6">
+<a class="text-zinc-500 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-zinc-500 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">language</span></a>
+<a class="text-zinc-500 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+<p class="text-xs text-zinc-500 font-inter">© 2024 LUXE TECH. All rights reserved.</p>
+</div>
+</footer>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-4 pb-4 bg-zinc-900/90 backdrop-blur-lg border-t border-white/10 rounded-t-2xl z-50 shadow-[0_-8px_24px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-blue-500 bg-blue-500/10 rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px] font-medium font-inter">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 hover:bg-white/5 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span class="text-[10px] font-medium font-inter">Shop</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 hover:bg-white/5 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-[10px] font-medium font-inter">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 hover:bg-white/5 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="text-[10px] font-medium font-inter">Cart</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout | Pomato</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: "#4facfe",
+                            container: "#2e428c",
+                        },
+                        background: "#030303",
+                        "on-background": "#ffffff",
+                        surface: {
+                            container: {
+                                lowest: "#050505",
+                                low: "#0a0a0a",
+                                DEFAULT: "#121212",
+                                high: "#1a1a1a",
+                                highest: "#222222",
+                            }
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Outfit', sans-serif; background-color: #030303; color: #ffffff; }
+        .glass-panel { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        }
+        .input-field { 
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            color: white; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .input-field:focus { 
+            border-color: #4facfe; 
+            background: rgba(255, 255, 255, 0.08);
+            outline: none; 
+            box-shadow: 0 0 0 4px rgba(79, 172, 254, 0.2); 
+        }
+        
+        .spinner {
+            border: 2px solid rgba(255,255,255,0.1);
+            border-top-color: #4facfe;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Top Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass">
+        <div class="flex justify-between items-center h-20 px-6 md:px-12 max-w-5xl mx-auto">
+            <a href="index.html" class="text-2xl font-black tracking-widest text-white uppercase flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center">
+                    <span class="text-black text-sm material-symbols-outlined">arrow_back</span>
+                </div>
+                POMATO
+            </a>
+            <div class="flex items-center gap-3 text-white/60 text-sm font-medium bg-white/5 px-6 py-2 rounded-full border border-white/10">
+                <span class="material-symbols-outlined text-emerald-400 text-lg">lock</span>
+                Secure Checkout
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-6 pt-32 pb-12 grid grid-cols-1 md:grid-cols-12 gap-8 relative" id="checkout-container">
+        
+        <!-- Left Column: Payment Form -->
+        <div class="md:col-span-7 space-y-8">
+            <h1 class="text-3xl font-bold text-white mb-8">Payment Gateway</h1>
+            
+            <div class="glass-panel p-6 rounded-2xl mb-8">
+                <h2 class="text-xl font-semibold text-white mb-6 flex items-center justify-between">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-blue-400">local_shipping</span>
+                        Shipping Address
+                    </span>
+                    <a href="address.html" class="text-sm text-blue-400 hover:underline">Add New</a>
+                </h2>
+                <div id="address-selection" class="space-y-3">
+                    <!-- Addresses will be injected here -->
+                    <p class="text-zinc-500 italic">Please login to select an address.</p>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl">
+                <h2 class="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-blue-400">credit_card</span>
+                    Payment Details
+                </h2>
+                
+                <form id="payment-form" class="space-y-6">
+                    
+                    <!-- Payment Options -->
+                    <div class="space-y-3">
+                        <!-- Card -->
+                        <label class="flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-colors border-blue-500 bg-blue-500/10" id="label-card">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="payment_method" value="card" class="text-blue-500 bg-surface-container border-outline-variant focus:ring-blue-500" checked>
+                                <span class="text-white font-medium">Credit / Debit Card</span>
+                            </div>
+                            <span class="material-symbols-outlined text-zinc-400">credit_card</span>
+                        </label>
+                        
+                        <!-- UPI -->
+                        <label class="flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-colors border-white/10 hover:border-white/20" id="label-upi">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="payment_method" value="upi" class="text-blue-500 bg-surface-container border-outline-variant focus:ring-blue-500">
+                                <span class="text-white font-medium">UPI</span>
+                            </div>
+                            <span class="material-symbols-outlined text-zinc-400">qr_code_scanner</span>
+                        </label>
+                        
+                        <!-- Apple Pay -->
+                        <label class="flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-colors border-white/10 hover:border-white/20" id="label-apple_pay">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="payment_method" value="apple_pay" class="text-blue-500 bg-surface-container border-outline-variant focus:ring-blue-500">
+                                <span class="text-white font-medium">Apple Pay</span>
+                            </div>
+                            <span class="material-symbols-outlined text-zinc-400">account_balance_wallet</span>
+                        </label>
+                        
+                        <!-- COD -->
+                        <label class="flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-colors border-white/10 hover:border-white/20" id="label-cod">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="payment_method" value="cod" class="text-blue-500 bg-surface-container border-outline-variant focus:ring-blue-500">
+                                <span class="text-white font-medium">Cash on Delivery</span>
+                            </div>
+                            <span class="material-symbols-outlined text-zinc-400">local_shipping</span>
+                        </label>
+                    </div>
+                    
+                    <!-- Dynamic Payment Details Container -->
+                    <div class="pt-4 border-t border-white/10 mt-6 relative overflow-hidden" style="min-height: 200px;">
+                        
+                        <!-- Card Details -->
+                        <div id="method-card" class="payment-method-section space-y-5 absolute top-4 left-0 w-full transition-opacity duration-300 opacity-100 z-10">
+                            <div>
+                                <label class="block text-sm text-zinc-400 mb-1">Cardholder Name</label>
+                                <input type="text" class="input-field w-full rounded-lg px-4 py-3" placeholder="John Doe" required id="card-name">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm text-zinc-400 mb-1">Card Number</label>
+                                <div class="relative">
+                                    <input type="text" class="input-field w-full rounded-lg px-4 py-3 pl-12 tracking-widest" placeholder="0000 0000 0000 0000" maxlength="19" required id="card-number">
+                                    <span class="material-symbols-outlined absolute left-4 top-3.5 text-zinc-500">credit_card</span>
+                                    <div class="absolute right-4 top-3.5 flex gap-1">
+                                        <div class="w-8 h-5 bg-zinc-700 rounded-sm"></div>
+                                        <div class="w-8 h-5 bg-zinc-700 rounded-sm"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm text-zinc-400 mb-1">Expiry Date</label>
+                                    <input type="text" class="input-field w-full rounded-lg px-4 py-3" placeholder="MM/YY" maxlength="5" required id="card-exp">
+                                </div>
+                                <div>
+                                    <label class="block text-sm text-zinc-400 mb-1">CVV</label>
+                                    <input type="password" class="input-field w-full rounded-lg px-4 py-3 tracking-widest" placeholder="•••" maxlength="3" required id="card-cvv">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- UPI Details -->
+                        <div id="method-upi" class="payment-method-section space-y-5 absolute top-4 left-0 w-full transition-opacity duration-300 opacity-0 pointer-events-none z-0">
+                            <div class="bg-surface-container-low rounded-xl p-6 border border-white/5 flex flex-col items-center justify-center gap-4">
+                                <span class="material-symbols-outlined text-4xl text-blue-400">qr_code_2</span>
+                                <p class="text-sm text-zinc-400 text-center">Scan QR using any UPI app or enter your UPI ID below.</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm text-zinc-400 mb-1">UPI ID (VPA)</label>
+                                <input type="text" class="input-field w-full rounded-lg px-4 py-3" placeholder="username@upi" id="upi-id">
+                            </div>
+                        </div>
+                        
+                        <!-- Apple Pay Details -->
+                        <div id="method-apple_pay" class="payment-method-section space-y-4 absolute top-4 left-0 w-full transition-opacity duration-300 opacity-0 pointer-events-none z-0">
+                            <div class="bg-black border border-white/10 rounded-xl p-8 flex flex-col items-center justify-center gap-6">
+                                <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-white text-3xl">account_balance_wallet</span>
+                                </div>
+                                <p class="text-sm text-zinc-400 text-center max-w-xs">Clicking Pay will securely open Apple Pay to complete your purchase using Face ID or Touch ID.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- COD Details -->
+                        <div id="method-cod" class="payment-method-section space-y-4 absolute top-4 left-0 w-full transition-opacity duration-300 opacity-0 pointer-events-none z-0">
+                            <div class="bg-surface-container-low rounded-xl p-6 border border-white/5 flex items-start gap-4">
+                                <div class="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <span class="material-symbols-outlined text-blue-400">local_shipping</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-medium mb-1">Pay at Doorstep</h4>
+                                    <p class="text-sm text-zinc-400 leading-relaxed">
+                                        You will pay the delivery executive when the order is delivered to your doorstep. Please keep exact change or UPI ready.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <button type="submit" id="pay-btn" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl mt-8 transition-all active:scale-95 flex justify-center items-center gap-2">
+                        Pay <span id="btn-total-amount">₹0</span>
+                    </button>
+                    
+                    <p class="text-center text-xs text-zinc-500 mt-4 flex items-center justify-center gap-1">
+                        <span class="material-symbols-outlined text-[14px]">lock</span>
+                        Payments are securely encrypted.
+                    </p>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Right Column: Order Summary -->
+        <div class="md:col-span-5">
+            <div class="glass-panel p-6 rounded-2xl sticky top-24">
+                <h2 class="text-xl font-semibold text-white mb-6">Order Summary</h2>
+                
+                <div id="checkout-items" class="space-y-4 mb-6 max-h-64 overflow-y-auto pr-2">
+                    <!-- Items injected here -->
+                </div>
+                
+                <!-- Coupon Code -->
+                <div class="mb-6">
+                    <label class="block text-[10px] font-black text-white/30 uppercase tracking-widest mb-2">Have a coupon?</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="coupon-input" placeholder="Enter code" class="input-field flex-1 rounded-xl px-4 py-3 text-sm" />
+                        <button type="button" id="apply-coupon-btn" class="bg-white/5 border border-white/10 hover:bg-white/10 text-white px-5 rounded-xl text-xs font-bold transition-all">Apply</button>
+                    </div>
+                    <div id="coupon-message" class="text-[10px] mt-2 hidden"></div>
+                </div>
+                
+                <div class="border-t border-white/10 pt-4 space-y-3 mb-6">
+                    <div class="flex justify-between text-zinc-400">
+                        <span>Subtotal</span>
+                        <span id="checkout-subtotal">₹0</span>
+                    </div>
+                    <div class="flex justify-between text-green-400">
+                        <span>Discount</span>
+                        <span id="checkout-discount">- ₹0</span>
+                    </div>
+                    <div class="flex justify-between text-zinc-400">
+                        <span>Shipping</span>
+                        <span class="text-white">Free</span>
+                    </div>
+                </div>
+                
+                <div class="border-t border-white/10 pt-4 flex justify-between items-center">
+                    <span class="text-lg text-white font-semibold">Total</span>
+                    <span id="checkout-final-total" class="text-2xl font-bold text-white">₹0</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Success State Overlay -->
+        <div id="success-overlay" class="absolute inset-0 z-50 bg-[#121317] flex flex-col items-center justify-center hidden rounded-2xl">
+            <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mb-6 shadow-[0_0_40px_rgba(34,197,94,0.4)]">
+                <span class="material-symbols-outlined text-white text-5xl font-bold" data-icon="check">check</span>
+            </div>
+            <h2 class="text-3xl font-bold text-white mb-2">Payment Successful!</h2>
+            <p class="text-zinc-400 mb-8 text-center max-w-md">Your order has been placed successfully. A confirmation receipt has been sent to your email.</p>
+            <a href="index.html" class="bg-surface-container-highest text-white px-8 py-3 rounded-full hover:bg-white/10 transition-colors border border-white/10">Return to Store</a>
+        </div>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="js/currency.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!window.auth.isAuthenticated()) {
+                window.location.href = 'login.html?redirect=checkout.html' + (window.location.search || '');
+                return;
+            }
+
+            const user = window.auth.getCurrentUser();
+            const addressContainer = document.getElementById('address-selection');
+            if (user.addresses && user.addresses.length > 0) {
+                addressContainer.innerHTML = user.addresses.map((addr, idx) => `
+                    <label class="flex items-center gap-4 p-4 rounded-xl border cursor-pointer transition-colors ${idx === 0 ? 'border-blue-500 bg-blue-500/10' : 'border-white/10 hover:border-white/20'}">
+                        <input type="radio" name="shipping_address" value="${idx}" class="text-blue-500 bg-surface-container border-outline-variant focus:ring-blue-500" ${idx === 0 ? 'checked' : ''}>
+                        <div class="text-sm">
+                            <p class="text-white font-medium">${addr.name} - ${addr.phone}</p>
+                            <p class="text-zinc-400">${addr.street}, ${addr.city}, ${addr.state} - ${addr.pin}</p>
+                        </div>
+                    </label>
+                `).join('');
+            } else {
+                addressContainer.innerHTML = `
+                    <div class="text-center py-4">
+                        <p class="text-zinc-500 mb-4">No saved addresses found.</p>
+                        <a href="address.html" class="bg-white/10 text-white px-6 py-2 rounded-lg hover:bg-white/20 transition-colors">Add Address</a>
+                    </div>
+                `;
+            }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const singleBuyId = urlParams.get('buy');
+            
+            let itemsToProcess = {};
+            
+            // If single buy, just process that one item. Otherwise, use the cart.
+            if (singleBuyId) {
+                itemsToProcess[singleBuyId] = 1;
+            } else {
+                itemsToProcess = readCart();
+            }
+            
+            const container = document.getElementById('checkout-items');
+            const itemsIds = Object.keys(itemsToProcess);
+            
+            if (itemsIds.length === 0) {
+                container.innerHTML = '<p class="text-zinc-500">Your order is empty.</p>';
+                return;
+            }
+            
+            let totalAmount = 0;
+            let totalMrp = 0;
+            
+            itemsIds.forEach(id => {
+                const qty = itemsToProcess[id];
+                // Lookup item in productsData (ignoring case or simple match for singleBuyId)
+                const product = productsData.find(p => p.id.toLowerCase() === id.toLowerCase() || p.id === id);
+                
+                if (product) {
+                    const price = parsePrice(product.price);
+                    const mrp = Math.floor(price * 1.15);
+                    
+                    totalAmount += price * qty;
+                    totalMrp += mrp * qty;
+                    
+                    const srcNoQuery = product.image.split('?')[0];
+                    const base = srcNoQuery.replace(/\.[a-z0-9]+$/i, '');
+                    const imageSrc = `${base}.jpg`;
+                    
+                    container.innerHTML += `
+                        <div class="flex gap-4 items-center">
+                            <div class="w-16 h-16 bg-white/5 rounded-lg flex items-center justify-center p-2 flex-shrink-0">
+                                <img src="${imageSrc}" class="w-full h-full object-contain" onerror="window.handleProductImageError ? window.handleProductImageError(this) : null" data-original-src="${product.image}">
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-white text-sm font-medium line-clamp-1">${product.name}</h4>
+                                <p class="text-zinc-500 text-xs">Qty: ${qty}</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-white font-bold">${window.currency ? window.currency.format(price * qty) : price * qty}</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            
+            const discount = totalMrp - totalAmount;
+            let couponDiscount = 0;
+            
+            const updateTotals = () => {
+                const finalTotal = totalAmount - couponDiscount;
+                document.getElementById('checkout-subtotal').textContent = formatPrice(totalMrp);
+                document.getElementById('checkout-discount').textContent = '- ' + formatPrice(discount + couponDiscount);
+                document.getElementById('checkout-final-total').textContent = formatPrice(finalTotal);
+                document.getElementById('btn-total-amount').textContent = formatPrice(finalTotal);
+            };
+
+            updateTotals();
+
+            // Coupon Logic
+            const couponInput = document.getElementById('coupon-input');
+            const applyBtn = document.getElementById('apply-coupon-btn');
+            const couponMsg = document.getElementById('coupon-message');
+            
+            const coupons = {
+                'SAVE10': 0.10,
+                'WELCOME20': 0.20,
+                'POMATO50': 0.50
+            };
+
+            applyBtn.addEventListener('click', () => {
+                const code = couponInput.value.trim().toUpperCase();
+                if (!code) return;
+
+                if (coupons[code]) {
+                    couponDiscount = Math.floor(totalAmount * coupons[code]);
+                    couponMsg.textContent = `Applied! ${coupons[code] * 100}% discount added.`;
+                    couponMsg.className = "text-[10px] mt-2 text-emerald-400 block";
+                    updateTotals();
+                } else {
+                    couponDiscount = 0;
+                    couponMsg.textContent = "Invalid coupon code.";
+                    couponMsg.className = "text-[10px] mt-2 text-red-400 block";
+                    updateTotals();
+                }
+            });
+            
+            // Handle form submission
+            const form = document.getElementById('payment-form');
+            const payBtn = document.getElementById('pay-btn');
+            const successOverlay = document.getElementById('success-overlay');
+            
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Show loading state
+                const originalText = payBtn.innerHTML;
+                payBtn.innerHTML = '<div class="spinner"></div> Processing...';
+                payBtn.disabled = true;
+                
+                // Simulate network request
+                setTimeout(() => {
+                    // Clear cart if we were checking out the cart
+                    if (!singleBuyId) {
+                        writeCart({});
+                    }
+                    
+                    // Show success state
+                    successOverlay.classList.remove('hidden');
+                    window.scrollTo(0,0);
+                }, 1500);
+            });
+            
+            // Format card number input
+            const cardInput = document.getElementById('card-number');
+            if (cardInput) {
+                cardInput.addEventListener('input', (e) => {
+                    let val = e.target.value.replace(/\D/g, '');
+                    let formatted = '';
+                    for (let i = 0; i < val.length; i++) {
+                        if (i > 0 && i % 4 === 0) formatted += ' ';
+                        formatted += val[i];
+                    }
+                    e.target.value = formatted;
+                });
+            }
+            
+            // Format expiry input
+            const expInput = document.getElementById('card-exp');
+            if (expInput) {
+                expInput.addEventListener('input', (e) => {
+                    let val = e.target.value.replace(/\D/g, '');
+                    if (val.length >= 2) {
+                        val = val.substring(0, 2) + '/' + val.substring(2, 4);
+                    }
+                    e.target.value = val;
+                });
+            }
+            
+            // Payment method tab switching
+            const radios = document.querySelectorAll('input[name="payment_method"]');
+            const btnTotalSpan = document.getElementById('btn-total-amount');
+            const btnTotalText = btnTotalSpan.textContent; // Store original
+            
+            radios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    const method = e.target.value;
+                    
+                    // Update label styles
+                    document.querySelectorAll('label[id^="label-"]').forEach(lbl => {
+                        lbl.className = "flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-colors border-white/10 hover:border-white/20";
+                    });
+                    const activeLabel = document.getElementById('label-' + method);
+                    activeLabel.className = "flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-colors border-blue-500 bg-blue-500/10";
+                    
+                    // Hide all sections
+                    document.querySelectorAll('.payment-method-section').forEach(sec => {
+                        sec.classList.remove('opacity-100', 'z-10');
+                        sec.classList.add('opacity-0', 'pointer-events-none', 'z-0');
+                    });
+                    
+                    // Show active section
+                    const activeSec = document.getElementById('method-' + method);
+                    activeSec.classList.remove('opacity-0', 'pointer-events-none', 'z-0');
+                    activeSec.classList.add('opacity-100', 'z-10');
+                    
+                    // Toggle required attributes for validation
+                    const cardInputs = ['card-name', 'card-number', 'card-exp', 'card-cvv'];
+                    const upiInput = document.getElementById('upi-id');
+                    
+                    if (method === 'card') {
+                        cardInputs.forEach(id => document.getElementById(id).setAttribute('required', 'true'));
+                        upiInput.removeAttribute('required');
+                        payBtn.innerHTML = `Pay <span id="btn-total-amount">${formatPrice(totalAmount)}</span>`;
+                    } else if (method === 'upi') {
+                        cardInputs.forEach(id => document.getElementById(id).removeAttribute('required'));
+                        upiInput.setAttribute('required', 'true');
+                        payBtn.innerHTML = `Pay via UPI <span id="btn-total-amount">${formatPrice(totalAmount)}</span>`;
+                    } else if (method === 'apple_pay') {
+                        cardInputs.forEach(id => document.getElementById(id).removeAttribute('required'));
+                        upiInput.removeAttribute('required');
+                        payBtn.innerHTML = `Pay with Apple Pay <span id="btn-total-amount">${formatPrice(totalAmount)}</span>`;
+                    } else if (method === 'cod') {
+                        cardInputs.forEach(id => document.getElementById(id).removeAttribute('required'));
+                        upiInput.removeAttribute('required');
+                        payBtn.innerHTML = `Confirm Order <span id="btn-total-amount">${formatPrice(totalAmount)}</span>`;
+                    }
+                });
+            });
+
+        });
+    <script src="js/auth.js"></script>
+    <script src="js/search.js"></script>
+    <!-- Footer -->
+    <footer class="w-full py-12 px-6 border-t border-white/5 bg-black">
+        <div class="flex flex-col items-center gap-6 text-center max-w-5xl mx-auto">
+            <div class="text-lg font-black text-white tracking-widest">POMATO</div>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a class="text-xs text-zinc-500 hover:text-white transition-colors" href="#">Privacy Policy</a>
+                <a class="text-xs text-zinc-500 hover:text-white transition-colors" href="#">Terms of Service</a>
+                <a class="text-xs text-zinc-500 hover:text-white transition-colors" href="contact.html">Support</a>
+            </div>
+            <p class="text-[10px] text-zinc-600 uppercase tracking-widest">© 2024 POMATO. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
