@@ -120,36 +120,36 @@
                     <!-- Payment Options -->
                     <div class="space-y-3">
                         <!-- Card -->
-                        <label class="flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-colors border-blue-500 bg-blue-500/10" id="label-card">
+                        <label class="flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-colors border-blue-500 bg-blue-500/10" id="label-card" for="payment-card">
                             <div class="flex items-center gap-3">
-                                <input type="radio" name="payment_method" value="card" class="text-blue-500 bg-surface-container border-outline-variant focus:ring-blue-500" checked>
+                                <input type="radio" id="payment-card" name="payment_method" value="card" class="text-blue-500 bg-surface-container border-outline-variant focus:ring-blue-500" checked>
                                 <span class="text-white font-medium">Credit / Debit Card</span>
                             </div>
                             <span class="material-symbols-outlined text-zinc-400">credit_card</span>
                         </label>
                         
                         <!-- UPI -->
-                        <label class="flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-colors border-white/10 hover:border-white/20" id="label-upi">
+                        <label class="flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-colors border-white/10 hover:border-white/20" id="label-upi" for="payment-upi">
                             <div class="flex items-center gap-3">
-                                <input type="radio" name="payment_method" value="upi" class="text-blue-500 bg-surface-container border-outline-variant focus:ring-blue-500">
+                                <input type="radio" id="payment-upi" name="payment_method" value="upi" class="text-blue-500 bg-surface-container border-outline-variant focus:ring-blue-500">
                                 <span class="text-white font-medium">UPI</span>
                             </div>
                             <span class="material-symbols-outlined text-zinc-400">qr_code_scanner</span>
                         </label>
                         
                         <!-- Apple Pay -->
-                        <label class="flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-colors border-white/10 hover:border-white/20" id="label-apple_pay">
+                        <label class="flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-colors border-white/10 hover:border-white/20" id="label-apple_pay" for="payment-apple-pay">
                             <div class="flex items-center gap-3">
-                                <input type="radio" name="payment_method" value="apple_pay" class="text-blue-500 bg-surface-container border-outline-variant focus:ring-blue-500">
+                                <input type="radio" id="payment-apple-pay" name="payment_method" value="apple_pay" class="text-blue-500 bg-surface-container border-outline-variant focus:ring-blue-500">
                                 <span class="text-white font-medium">Apple Pay</span>
                             </div>
                             <span class="material-symbols-outlined text-zinc-400">account_balance_wallet</span>
                         </label>
                         
                         <!-- COD -->
-                        <label class="flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-colors border-white/10 hover:border-white/20" id="label-cod">
+                        <label class="flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-colors border-white/10 hover:border-white/20" id="label-cod" for="payment-cod">
                             <div class="flex items-center gap-3">
-                                <input type="radio" name="payment_method" value="cod" class="text-blue-500 bg-surface-container border-outline-variant focus:ring-blue-500">
+                                <input type="radio" id="payment-cod" name="payment_method" value="cod" class="text-blue-500 bg-surface-container border-outline-variant focus:ring-blue-500">
                                 <span class="text-white font-medium">Cash on Delivery</span>
                             </div>
                             <span class="material-symbols-outlined text-zinc-400">local_shipping</span>
@@ -342,7 +342,6 @@
             
             if (itemsIds.length === 0) {
                 container.innerHTML = '<p class="text-zinc-500">Your order is empty.</p>';
-                return;
             }
             
             let totalAmount = 0;
@@ -505,27 +504,50 @@
                     const cardInputs = ['card-name', 'card-number', 'card-exp', 'card-cvv'];
                     const upiInput = document.getElementById('upi-id');
                     
+                    let prefix = "Pay ";
                     if (method === 'card') {
-                        cardInputs.forEach(id => document.getElementById(id).setAttribute('required', 'true'));
-                        upiInput.removeAttribute('required');
-                        payBtn.innerHTML = `Pay <span id="btn-total-amount">${formatPrice(totalAmount)}</span>`;
+                        cardInputs.forEach(id => {
+                            let el = document.getElementById(id);
+                            el.required = true;
+                            el.disabled = false;
+                        });
+                        upiInput.required = false;
+                        upiInput.disabled = true;
                     } else if (method === 'upi') {
-                        cardInputs.forEach(id => document.getElementById(id).removeAttribute('required'));
-                        upiInput.setAttribute('required', 'true');
-                        payBtn.innerHTML = `Pay via UPI <span id="btn-total-amount">${formatPrice(totalAmount)}</span>`;
+                        cardInputs.forEach(id => {
+                            let el = document.getElementById(id);
+                            el.required = false;
+                            el.disabled = true;
+                        });
+                        upiInput.required = true;
+                        upiInput.disabled = false;
+                        prefix = "Pay via UPI ";
                     } else if (method === 'apple_pay') {
-                        cardInputs.forEach(id => document.getElementById(id).removeAttribute('required'));
-                        upiInput.removeAttribute('required');
-                        payBtn.innerHTML = `Pay with Apple Pay <span id="btn-total-amount">${formatPrice(totalAmount)}</span>`;
+                        cardInputs.forEach(id => {
+                            let el = document.getElementById(id);
+                            el.required = false;
+                            el.disabled = true;
+                        });
+                        upiInput.required = false;
+                        upiInput.disabled = true;
+                        prefix = "Pay with Apple Pay ";
                     } else if (method === 'cod') {
-                        cardInputs.forEach(id => document.getElementById(id).removeAttribute('required'));
-                        upiInput.removeAttribute('required');
-                        payBtn.innerHTML = `Confirm Order <span id="btn-total-amount">${formatPrice(totalAmount)}</span>`;
+                        cardInputs.forEach(id => {
+                            let el = document.getElementById(id);
+                            el.required = false;
+                            el.disabled = true;
+                        });
+                        upiInput.required = false;
+                        upiInput.disabled = true;
+                        prefix = "Confirm Order ";
                     }
+                    
+                    payBtn.innerHTML = `${prefix} <span id="btn-total-amount"></span>`;
+                    updateTotals();
                 });
             });
-
         });
+    </script>
     <script src="js/auth.js"></script>
     <script src="js/search.js"></script>
     <!-- Footer -->
